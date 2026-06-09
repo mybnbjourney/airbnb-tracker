@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="BizTracker" />
@@ -14,7 +15,7 @@
     #root { max-width:480px; margin:0 auto; min-height:100vh; }
     input[type="date"]::-webkit-calendar-picker-indicator,
     input[type="month"]::-webkit-calendar-picker-indicator { opacity:0.5; }
-    select { appearance:none; -webkit-appearance:none; }
+    select { -webkit-appearance:none; }
   </style>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
@@ -25,7 +26,7 @@
   <script type="text/babel" data-presets="react">
     const { useState, useEffect, useRef } = React;
 
-    // SVG Icon component — no external dependency
+    // Icon component using inline SVG strings
     function Icon({ icon: name, size=18, color, style }) {
       const c = color||"currentColor";
       const icons = {
@@ -234,14 +235,14 @@ async function saveSheet(sheet, records) {
 
 /* ─── NAV ─── */
 const NAV = [
-  { id:"Dashboard", icon:Home,        label:"Home" },
-  { id:"Expenses",  icon:TrendingDown, label:"Expenses" },
-  { id:"Income",    icon:TrendingUp,   label:"Income" },
-  { id:"Tasks",     icon:CheckSquare,  label:"Tasks" },
-  { id:"More",      icon:MoreHorizontal, label:"More" },
+  { id:"Dashboard", icon:"Home",        label:"Home" },
+  { id:"Expenses",  icon:"TrendingDown", label:"Expenses" },
+  { id:"Income",    icon:"TrendingUp",   label:"Income" },
+  { id:"Tasks",     icon:"CheckSquare",  label:"Tasks" },
+  { id:"More",      icon:"MoreHorizontal", label:"More" },
 ];
 const MORE_ITEMS = ["Mileage","Time Log","Mortgage","Documents","Contacts","Tasks","Reports","Cards","Settings"];
-const MORE_ICONS = { Mileage:Car, "Time Log":Clock, Mortgage:Building2, Documents:FileArchive, Contacts:Users, Tasks:CheckSquare, Reports:BarChart2, Cards:CreditCard, Settings:Settings };
+const MORE_ICONS = { Mileage:"Car", "Time Log":"Clock", Mortgage:"Building2", Documents:"FileArchive", Contacts:"Users", Tasks:"CheckSquare", Reports:"BarChart2", Cards:"CreditCard", Settings:"Settings" };
 
 /* ════════════════════════════════════════
    APP
@@ -429,12 +430,12 @@ function DashboardTab({ fi, totalIn, totalEx, netProfit, totalMi, miDeduct, tota
   });
 
   const STATS = [
-    { key:"income",  icon:TrendingUp,   label:"Income",    val:fmt$(totalIn),               color:T.green,  bg:"#ECFDF5" },
-    { key:"expense", icon:TrendingDown, label:"Expenses",  val:fmt$(totalEx),               color:T.red,    bg:"#FEF2F2" },
-    { key:"mileage", icon:Car,          label:"Mileage",   val:`${totalMi.toFixed(0)} mi`,  color:T.accent, bg:"#EFF6FF", sub:fmt$(miDeduct)+" deduction" },
-    { key:"timelog", icon:Clock,        label:"Hours",     val:`${totalHr.toFixed(1)}h`,    color:T.teal,   bg:"#F0FDFA" },
-    { key:null,      icon:BarChart2,    label:"Net Profit",val:fmt$(netProfit),             color:netProfit>=0?T.green:T.red, bg:netProfit>=0?"#ECFDF5":"#FEF2F2" },
-    { key:null,      icon:FileArchive,  label:"Documents", val:(data.documents||[]).length, color:T.purple, bg:"#F5F3FF" },
+    { key:"income",  icon:"TrendingUp",   label:"Income",    val:fmt$(totalIn),               color:T.green,  bg:"#ECFDF5" },
+    { key:"expense", icon:"TrendingDown", label:"Expenses",  val:fmt$(totalEx),               color:T.red,    bg:"#FEF2F2" },
+    { key:"mileage", icon:"Car",          label:"Mileage",   val:`${totalMi.toFixed(0)} mi`,  color:T.accent, bg:"#EFF6FF", sub:fmt$(miDeduct)+" deduction" },
+    { key:"timelog", icon:"Clock",        label:"Hours",     val:`${totalHr.toFixed(1)}h`,    color:T.teal,   bg:"#F0FDFA" },
+    { key:null,      icon:"BarChart2",    label:"Net Profit",val:fmt$(netProfit),             color:netProfit>=0?T.green:T.red, bg:netProfit>=0?"#ECFDF5":"#FEF2F2" },
+    { key:null,      icon:"FileArchive",  label:"Documents", val:(data.documents||[]).length, color:T.purple, bg:"#F5F3FF" },
   ];
 
   const openModal = (type, record=null) => setModal(record ? {type, record} : type);
