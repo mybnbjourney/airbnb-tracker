@@ -499,7 +499,7 @@ function DashboardTab({ fi, totalIn, totalEx, netProfit, totalMi, miDeduct, tota
                   <div style={{ fontSize:12, color:T.text3, marginTop:3, display:"flex", gap:6, flexWrap:"wrap", alignItems:"center" }}>
                     {t.project && <Badge color={T.accent}>{t.project}</Badge>}
                     {d && <span style={{ color:od?T.red:td?T.amber:T.text3, display:"flex", alignItems:"center", gap:3 }}>
-                      <Icon icon={od?AlertCircle:td?AlertTriangle:Calendar} size={11} color={od?T.red:td?T.amber:T.text3} />
+                      <Icon icon={od?"AlertCircle":td?"AlertTriangle":"Calendar"} size={11} color={od?T.red:td?T.amber:T.text3} />
                       {fmtDate(t.dueDate)}
                     </span>}
                   </div>
@@ -584,7 +584,7 @@ function DashboardTab({ fi, totalIn, totalEx, netProfit, totalMi, miDeduct, tota
           <div key={r.id} onClick={()=>openModal("editExpense", r)}
             style={{ display:"flex", alignItems:"center", gap:14, padding:"14px 18px", cursor:"pointer", borderBottom: i<arr.length-1?`1px solid ${T.border}`:"none" }}>
             <div style={{ width:42, height:42, borderRadius:12, background:getTax(r.category,data.customExpenseCats||[])==="E"?"#FEF3C7":"#EFF6FF", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-              <Icon icon={getTax(r.category,data.customExpenseCats||[])==="E"?Building2:DollarSign} size={20} color={getTax(r.category,data.customExpenseCats||[])==="E"?T.amber:T.accent} />
+              <Icon icon={getTax(r.category,data.customExpenseCats||[])==="E"?"Building2":"DollarSign"} size={20} color={getTax(r.category,data.customExpenseCats||[])==="E"?T.amber:T.accent} />
             </div>
             <div style={{ flex:1, minWidth:0 }}>
               <div style={{ fontSize:14, fontWeight:600, color:T.text, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>{r.description||r.category}</div>
