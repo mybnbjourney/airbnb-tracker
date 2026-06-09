@@ -304,7 +304,7 @@ function App() {
       <header style={{ background:T.surface, padding:"16px 20px 12px", display:"flex", alignItems:"center", justifyContent:"space-between", position:"sticky", top:0, zIndex:100, boxShadow:"0 1px 0 #ECEEF2" }}>
         <div style={{ display:"flex", alignItems:"center", gap:10 }}>
           <div style={{ width:36, height:36, background:T.accent, borderRadius:10, display:"flex", alignItems:"center", justifyContent:"center" }}>
-            <Icon icon={Home} size={20} color="#fff" /></div>
+            <Icon icon="Home" size={20} color="#fff" /></div>
           <div>
             <div style={{ fontWeight:800, fontSize:17, letterSpacing:"-0.5px", color:T.text }}>BizTracker</div>
             <div onClick={()=>sync==="error"&&fetchSheets().then(r=>{setData(p=>({...p,...r}));setSync("saved");}).catch(()=>{})}
@@ -324,7 +324,7 @@ function App() {
                 return (
                   <button key={t} onClick={()=>goTab(t)} style={{ display:"flex", alignItems:"center", gap:14, width:"100%", background:"none", border:"none", color:T.text, fontFamily:"inherit", fontSize:15, fontWeight:500, padding:"13px 16px", cursor:"pointer", textAlign:"left", borderRadius:12 }}>
                     <div style={{ width:32, height:32, background:"#F3F4F6", borderRadius:8, display:"flex", alignItems:"center", justifyContent:"center" }}>
-                      {IconComp && <Icon icon={IconComp} size={17} color={T.text2} />}
+                      {IconComp && <Icon icon="IconComp" size={17} color={T.text2} />}
                     </div>
                     {t}
                   </button>
@@ -449,18 +449,18 @@ function DashboardTab({ fi, totalIn, totalEx, netProfit, totalMi, miDeduct, tota
         <div style={{ display:"flex", gap:2, background:"#F3F4F6", borderRadius:12, padding:4 }}>
           <button onClick={()=>setTaskView("todo")}
             style={{ background:taskView==="todo"?T.surface:"transparent", color:taskView==="todo"?T.text:T.text3, border:"none", borderRadius:9, padding:"7px 16px", fontSize:13, fontWeight:600, cursor:"pointer", fontFamily:"inherit", boxShadow:taskView==="todo"?"0 1px 4px rgba(0,0,0,0.08)":"none", display:"flex", alignItems:"center", gap:6 }}>
-            <Icon icon={CheckCircle2} size={14} color={taskView==="todo"?T.accent:T.text3} /> Todo
+            <Icon icon="CheckCircle2" size={14} color={taskView==="todo"?T.accent:T.text3} /> Todo
           </button>
           <button onClick={()=>setTaskView("tasks")}
             style={{ background:taskView==="tasks"?T.surface:"transparent", color:taskView==="tasks"?T.text:T.text3, border:"none", borderRadius:9, padding:"7px 16px", fontSize:13, fontWeight:600, cursor:"pointer", fontFamily:"inherit", boxShadow:taskView==="tasks"?"0 1px 4px rgba(0,0,0,0.08)":"none", display:"flex", alignItems:"center", gap:6 }}>
-            <Icon icon={BarChart2} size={14} color={taskView==="tasks"?T.accent:T.text3} /> Progress
+            <Icon icon="BarChart2" size={14} color={taskView==="tasks"?T.accent:T.text3} /> Progress
           </button>
         </div>
         <div style={{ display:"flex", gap:8, alignItems:"center" }}>
           {!notif
-            ? <button onClick={requestNotif} style={{ ...S.btnGhost, padding:"7px 12px", color:T.amber, display:"flex", alignItems:"center", gap:5, fontSize:12 }}><Icon icon={AlertCircle} size={14} color={T.amber} /> Alerts</button>
-            : <span style={{ fontSize:12, color:T.green, fontWeight:600, display:"flex", alignItems:"center", gap:4 }}><Icon icon={CheckCircle2} size={13} color={T.green} /> On</span>}
-          <button onClick={()=>openModal("task")} style={{ ...S.btn, padding:"8px 14px", fontSize:13, display:"flex", alignItems:"center", gap:5 }}><Icon icon={Plus} size={15} color="#fff" /> Add</button>
+            ? <button onClick={requestNotif} style={{ ...S.btnGhost, padding:"7px 12px", color:T.amber, display:"flex", alignItems:"center", gap:5, fontSize:12 }}><Icon icon="AlertCircle" size={14} color={T.amber} /> Alerts</button>
+            : <span style={{ fontSize:12, color:T.green, fontWeight:600, display:"flex", alignItems:"center", gap:4 }}><Icon icon="CheckCircle2" size={13} color={T.green} /> On</span>}
+          <button onClick={()=>openModal("task")} style={{ ...S.btn, padding:"8px 14px", fontSize:13, display:"flex", alignItems:"center", gap:5 }}><Icon icon="Plus" size={15} color="#fff" /> Add</button>
         </div>
       </div>
 
@@ -469,7 +469,7 @@ function DashboardTab({ fi, totalIn, totalEx, netProfit, totalMi, miDeduct, tota
         <div style={{ marginBottom:8 }}>
           {overdue.length>0 && (
             <div style={{ background:"#FEF2F2", border:"1px solid #FECACA", borderRadius:12, padding:"12px 16px", marginBottom:10, display:"flex", gap:10, alignItems:"flex-start" }}>
-              <Icon icon={AlertCircle} size={16} color={T.red} style={{ marginTop:1, flexShrink:0 }} />
+              <Icon icon="AlertCircle" size={16} color={T.red} style={{ marginTop:1, flexShrink:0 }} />
               <div>
                 <div style={{ color:T.red, fontWeight:700, fontSize:13 }}>마감 지난 항목 {overdue.length}개</div>
                 <div style={{ fontSize:11, color:T.red, marginTop:2, opacity:0.8 }}>{overdue.map(t=>t.title).join(", ")}</div>
@@ -478,7 +478,7 @@ function DashboardTab({ fi, totalIn, totalEx, netProfit, totalMi, miDeduct, tota
           )}
           {dueToday.length>0 && (
             <div style={{ background:"#FFFBEB", border:"1px solid #FDE68A", borderRadius:12, padding:"12px 16px", marginBottom:10, display:"flex", gap:10, alignItems:"flex-start" }}>
-              <Icon icon={AlertTriangle} size={16} color={T.amber} style={{ marginTop:1, flexShrink:0 }} />
+              <Icon icon="AlertTriangle" size={16} color={T.amber} style={{ marginTop:1, flexShrink:0 }} />
               <div>
                 <div style={{ color:T.amber, fontWeight:700, fontSize:13 }}>오늘 마감 {dueToday.length}개</div>
                 <div style={{ fontSize:11, color:T.amber, marginTop:2, opacity:0.8 }}>{dueToday.map(t=>t.title).join(", ")}</div>
@@ -492,7 +492,7 @@ function DashboardTab({ fi, totalIn, totalEx, netProfit, totalMi, miDeduct, tota
             return (
               <div key={t.id} style={{ ...S.card, marginBottom:8, padding:"14px 16px", display:"flex", alignItems:"center", gap:12, borderLeft:`3px solid ${od?T.red:td?T.amber:PC[t.priority]||T.text3}` }}>
                 <div onClick={()=>toggleTask(t.id)} style={{ cursor:"pointer", flexShrink:0 }}>
-                  <Icon icon={Circle} size={22} color={PC[t.priority]||T.text3} />
+                  <Icon icon="Circle" size={22} color={PC[t.priority]||T.text3} />
                 </div>
                 <div onClick={()=>openModal({type:"editTask", record:t})} style={{ flex:1, minWidth:0, cursor:"pointer" }}>
                   <div style={{ fontSize:14, fontWeight:600, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis", color:T.text }}>{t.title}</div>
@@ -508,7 +508,7 @@ function DashboardTab({ fi, totalIn, totalEx, netProfit, totalMi, miDeduct, tota
               </div>
             );
           })}
-          {pending.length===0 && <div style={{ ...S.card, textAlign:"center", padding:"20px 0", marginBottom:8, display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}><Icon icon={CheckCircle2} size={18} color={T.green} /><span style={{ color:T.green, fontWeight:600, fontSize:14 }}>모든 할일 완료!</span></div>}
+          {pending.length===0 && <div style={{ ...S.card, textAlign:"center", padding:"20px 0", marginBottom:8, display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}><Icon icon="CheckCircle2" size={18} color={T.green} /><span style={{ color:T.green, fontWeight:600, fontSize:14 }}>모든 할일 완료!</span></div>}
           {pending.length>5 && <div style={{ fontSize:12, color:T.text3, textAlign:"center", marginBottom:8 }}>+{pending.length-5}개 더</div>}
         </div>
       )}
@@ -576,7 +576,7 @@ function DashboardTab({ fi, totalIn, totalEx, netProfit, totalMi, miDeduct, tota
       {/* RECENT EXPENSES */}
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12, marginTop:8 }}>
         <div style={{ fontSize:16, fontWeight:700, color:T.text }}>Recent Expenses</div>
-        <span style={{ fontSize:12, color:T.text3, display:"flex", alignItems:"center", gap:4 }}><Icon icon={Edit3} size={12} color={T.text3} /> tap to edit</span>
+        <span style={{ fontSize:12, color:T.text3, display:"flex", alignItems:"center", gap:4 }}><Icon icon="Edit3" size={12} color={T.text3} /> tap to edit</span>
       </div>
       <div style={{ ...S.card, padding:0, overflow:"hidden" }}>
         {fi.expenses.length===0 && <div style={{ padding:24, textAlign:"center", color:T.text3, fontSize:14 }}>No expenses this month</div>}
